@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% block title %}Заказ картины — VilArt{% endblock %}
+
+{% block content %}
+<style>
+    .order {
+        padding: 4rem 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+    }
+
+    .order__container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .order__title {
+        text-align: center;
+        color: #1a1a2e;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        position: relative;
+    }
+
+    .order__title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: #667eea;
+        border-radius: 2px;
+    }
+
+    .order-form {
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    .order-form p {
+        margin: 0;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #4a5568;
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        outline: none;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    .btn--primary {
+        background: #667eea;
+        color: white;
+        border: none;
+        padding: 1.2rem 2.5rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+        display: block;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .btn--primary:hover {
+        background: #5a67d8;
+        transform: translateY(-2px);
+    }
+
+    .btn--primary:active {
+        transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+        .order__container {
+            margin: 1rem;
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .order__title {
+            font-size: 2rem;
+        }
+    }
+</style>
+
+<section class="order">
+    <div class="order__container">
+        <h1 class="order__title">Оформление заказа</h1>
+
+        <form method="post" class="order-form">
+            {% csrf_token %}
+            
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn--primary">Отправить заказ</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

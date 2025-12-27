@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}VilArt — Портфолио{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body class="body">
+    <header class="header">
+        <div class="header__container">
+            <a href="{% url 'home' %}" class="logo">VilArt</a>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="{% url 'home' %}" class="nav__link">Главная</a></li>
+                    <li class="nav__item"><a href="{% url 'about' %}" class="nav__link">Обо мне</a></li>
+                    <li class="nav__item"><a href="{% url 'portfolio' %}" class="nav__link">Портфолио</a></li>
+                    <li class="nav__item"><a href="{% url 'order' %}" class="nav__link">Заказ картины</a></li>
+                    <li class="nav__item"><a href="{% url 'contact' %}" class="nav__link">Связь со мной</a></li>                    
+                    <li class="nav__item"><a href="{% url 'admin_dashboard' %}" class="nav__link">Личный кабинет</a></li>
+                    
+                </ul>
+            </nav>
+            <button class="burger" aria-label="Меню"><span class="burger__line"></span></button>
+        </div>
+    </header>
+
+    <main class="main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__copyright">&copy; 2025 VilArt. Все права защищены.</p>
+            <div class="footer__social">
+                {% for link in social_links %}
+                    <a href="{{ link.url }}" class="footer__social-link {{ link.icon_class }}" aria-label="{{ link.platform }}"></a>
+                {% endfor %}
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}Главная — VilArt{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="hero__container">
+        <h1 class="hero__title">Творчество <span class="text-gradient">Александры</span></h1>
+        <p class="hero__subtitle">Живопись, которая оживляет эмоции</p>
+        <a href="{% url 'portfolio' %}" class="btn btn--primary">Посмотреть портфолио</a>
+    </div>
+</section>
+
+<section class="works">
+    <div class="works__container">
+        <header class="works__header">
+            <h2 class="works__title">Избранные работы</h2>
+            <a href="{% url 'portfolio' %}" class="btn btn--outline">
+                Все работы
+            </a>
+        </header>
+
+        {% if works %}
+            <div class="works__grid">
+                {% for work in works %}
+                    <article class="work-card">
+                        <div class="work-card__image-wrapper">
+                            <img
+                                src="{{ work.image.url }}"
+                                alt="{{ work.title }}"
+                                class="work-card__image"
+                                loading="lazy"
+                            >
+                        </div>
+                        <div class="work-card__content">
+                            <h3 class="work-card__title">{{ work.title }}</h3>
+                            <p class="work-card__description">
+                                {{ work.description|truncatewords:20 }}
+                            </p>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <!-- Демонстрационные карточки при отсутствии реальных работ -->
+            <div class="works__grid">
+                <article class="work-card">
+                    <div class="work-card__image-wrapper">
+                        <img src="/static/images/ангел.jpg" alt="Ангел" class="work-card__image" loading="lazy">
+                    </div>
+                    <div class="work-card__content">
+                        <h3 class="work-card__title">Ангел</h3>
+                        <p class="work-card__description">Масляная живопись на холсте. Тёплые оттенки заката над морем.</p>
+                    </div>
+                </article>
+
+                <article class="work-card">
+                    <div class="work-card__image-wrapper">
+                        <img src="/static/images/яблоко.jpg" alt="Натюрморт" class="work-card__image" loading="lazy">
+                    </div>
+                    <div class="work-card__content">
+                        <h3 class="work-card__title">Натюрморт</h3>
+                        <p class="work-card__description">Экспериментальная работа с контрастными цветами и геометрическими формами.</p>
+                    </div>
+                </article>
+
+                <article class="work-card">
+                    <div class="work-card__image-wrapper">
+                        <img src="/static/images/чел.jpg" alt="DND" class="work-card__image" loading="lazy">
+                    </div>
+                    <div class="work-card__content">
+                        <h3 class="work-card__title">Персонажи для ДНД</h3>
+                        <p class="work-card__description">Зарисовка.</p>
+                    </div>
+                </article>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<section class="about">
+    <div class="about__container">
+        <div class="about__text">
+            <h2 class="about__title">Об авторе</h2>
+            <p class="about__description">
+                Меня зовут Александра, и я художник с 10‑летним опытом работы в различных техниках: 
+                масло, акварель, акрил, графика. Моя цель — передавать эмоции через цвет и форму,
+                создавая уникальные произведения искусства.
+            </p>
+            <p class="about__description">
+                Каждое полотно — это история, рассказанная без слов. Я черпаю вдохновение в природе,
+                городской среде и человеческих эмоциях. В моих работах вы найдёте как реалистичные пейзажи,
+                так и абстрактные эксперименты.
+            </p>
+            <a href="{% url 'about' %}" class="btn btn--secondary">Узнать больше</a>
+        </div>
+        <div class="about__image">
+            <img src="/static/images/Саня.jpg" alt="Александра — художник" class="about__photo">
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <div class="cta__container">
+        <h2 class="cta__title">Хотите заказать картину?</h2>
+        <p class="cta__text">
+            Создайте уникальное произведение искусства — выберите стиль и размер,
+            а я воплощу вашу идею в живописи.
+        </p>
+        <a href="{% url 'order' %}" class="btn btn--accent">Оформить заказ</a>
+    </div>
+</section>
+
+
+{% endblock %}

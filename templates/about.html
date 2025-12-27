@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Обо мне — VilArt{% endblock %}
+
+{% block content %}
+<style>
+    .about__profile {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .about__photo {
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid #4a6fa5;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .about__intro {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 2rem auto;
+        line-height: 1.6;
+    }
+    
+    .about__section {
+        margin: 3rem 0;
+    }
+    
+    .about__section h2 {
+        color: #4a6fa5;
+        border-bottom: 2px solid #4a6fa5;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1rem;
+    }
+    
+    .skill-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+    
+    .skill-card:hover {
+        transform: translateY(-5px);
+        background: #e3f2fd;
+    }
+    
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    
+    .gallery-item {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+    
+    .gallery-item img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover img {
+        transform: scale(1.05);
+    }
+    
+    .contact-box {
+        background: #4a6fa5;
+        color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        text-align: center;
+        margin-top: 2rem;
+    }
+    
+    .btn-contact {
+        display: inline-block;
+        background: white;
+        color: #4a6fa5;
+        padding: 0.8rem 1.5rem;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        margin-top: 1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-contact:hover {
+        background: #e3f2fd;
+        transform: translateY(-2px);
+    }
+</style>
+
+<section class="about">
+    <div class="about__container">
+        <div class="about__profile">
+            <img src="{% static 'images/about/саша.jpg' %}" alt="Александра, художник" class="about__photo">
+        </div>
+        
+        <div class="about__intro">
+            <p>Привет! Я — Александра, профессиональный художник и иллюстратор с 12‑летним опытом. Моё творчество — это диалог с миром через цвет, форму и композицию. Я верю, что каждая картина должна рассказывать историю и вызывать эмоции.</p>
+        </div>
+
+        <div class="about__section">
+            <h2>Моё творческое кредо</h2>
+            <p>В своей работе я руководствуюсь тремя принципами:</p>
+            <ul>
+                <li><strong>Искренность</strong> — каждая работа должна отражать настоящие чувства.</li>
+                <li><strong>Эксперимент</strong> — постоянное исследование новых техник и материалов.</li>
+                <li><strong>Диалог</strong> — взаимодействие со зрителем через визуальные образы.</li>
+            </ul>
+        </div>
+
+        <div class="about__section">
+            <h2>Навыки и техники</h2>
+            <div class="skills- grinding">
+                <div class="skill-card">
+                    <h3>Масло</h3>
+                    <p>Классические и современные техники масляной живописи</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Акварель</h3>
+                    <p>Лёгкость и прозрачность акварельных работ</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Цифровая иллюстрация</h3>
+                    <p>Работа в Adobe Photoshop и Procreate</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Графика</h3>
+                    <p>Карандаш, уголь, тушь, перо</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="about__section">
+            <h2>Мои работы</h2>
+            <p>Ниже представлены примеры моих работ в разных техниках и жанрах:</p>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="{% static 'images/двое.jpg' %}" alt="Пейзаж маслом">
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'images/яблоко.jpg' %}" alt="Акварельный натюрморт">
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'images/рыжий.jpg' %}" alt="Цифровая иллюстрация">
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'images/ангел.jpg' %}" alt="Графическая работа">
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'images/днд.jpg' %}" alt="Абстрактная композиция">
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'images/чел.jpg' %}" alt="Портрет">
+                </div>
+            </div>
+        </div>
+
+        <div class="about__section">
+            <h2>Образование и опыт</h2>
+            <ul>
+                <li><strong>2013</strong> — Окончила художественную школу им. И.Е. Репина</li>
+                <li><strong>2018</strong> — Выпускница Академии художеств по специальности «Живопись»</li>
+                <li><strong>2019–2022</strong> — Работала художником-оформителем в театре «Современник»</li>
+                <li><strong>С 2023</strong> — Свободное творчество и частные заказы</li>
+            </ul>
+        </div>
+
+        <div class="about__section">
+            <h2>Выставки</h2>
+            <ul>
+                <li>Персональная выставка «Отражение» (2021, Галерея «Арт-Пространство»)</li>
+                <li>Групповая выставка «Новые горизонты» (2022, Центр современного искусства)</li>
+                <li>Онлайн-выставка «Digital Art 2023» (международный проект)</li>
+            </ul>
+        </div>
+
+        <div class="contact-box">
+            <h3>Хотите заказать работу или обсудить проект?</h3>
+            <p>Буду рада сотрудничеству! Свяжитесь со мной любым удобным способом:</p>
+            <a href="mailto:alexandra@vilart.com" class="btn-contact">Написать письмо</a>
+            <a href="tel:+79991234567" class="btn-contact">Позвонить</a>
+        </div>
+{% endblock %}

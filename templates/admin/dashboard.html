@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Панель управления — VilArt{% endblock %}
+
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">Главная</a>
+    &rsaquo; Панель управления
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <h1>Панель управления</h1>
+
+    <div class="module">
+        <h2>Статистика</h2>
+        <p><strong>Новых заказов:</strong> {{ pending_orders }}</p>
+        <p><strong>Всего работ:</strong> {{ total_works }}</p>
+    </div>
+
+    <div class="module">
+        <h2>Последние работы</h2>
+        <ul>
+            {% for work in recent_works %}
+                <li>
+                    <a href="{% url 'admin:portfolio_portfoliowork_change' work.id %}">
+                        {{ work.title }} ({{ work.created_at|date:"d.m.Y" }})
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
